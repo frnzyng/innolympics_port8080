@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>850771391386-uj31ak7dit6mtikftubjlesni9t9u88e.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.850771391386-uj31ak7dit6mtikftubjlesni9t9u88e</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>850771391386-75naocsl9vto478qqd7771eorhbhif39.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDfClT_MgdhVPrdytlDXQ2NMHOG3H4mtW4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>850771391386</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.mycompany.innolympics</string>
+	<key>PROJECT_ID</key>
+	<string>innolympics-c68ba</string>
+	<key>STORAGE_BUCKET</key>
+	<string>innolympics-c68ba.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:850771391386:ios:a5d4b1a36877983a294023</string>
+</dict>
+</plist>

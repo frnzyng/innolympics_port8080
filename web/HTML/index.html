@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(to bottom, #f7f9ff, #cdd6ff);
+            color: #021a84;
+        }
+
+        .navbar {
+            background-color: #021a84;
+        } 
+
+        .navbar-brand, .nav-link {
+            color: #ffffff !important;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            background-color: #021a84;
+            border: 1px solid #021a84;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            color: #021a84;
+            font-weight: bold;
+        }
+
+        .form-control, select {
+            border-radius: 5px;
+            border: 1px solid #A36361;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .btn-submit {
+            background-color: #6e7cb6;
+            color: #fff;
+            border-radius: 5px;
+            padding: 10px 20px;
+        }
+
+        .btn-submit:hover {
+            background-color: #4D0070FF;
+            border-color: rgb(211, 132, 119);
+        }
+
+        .alert {
+            font-size: 1.1em;
+        }
+
+        .card-title{
+            color: #ffffff;
+        }
+
+        .form-label{
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand">LegisTrackr</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">User Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Admin Registration Form -->
+    <div class="container">
+        <div class="card">
+            <h2 class="card-title text-center mb-4">User Registration</h2>
+            <form class="form" id="admin-registration-form">
+                <div class="mb-3">
+                    <label for="first-name" class="form-label">First Name*</label>
+                    <input type="text" id="first-name" name="firstName" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="last-name" class="form-label">Last Name*</label>
+                    <input type="text" id="last-name" name="lastName" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="middle-name" class="form-label">Middle Name</label>
+                    <input type="text" id="middle-name" name="middleName" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="sex" class="form-label">Sex*</label>
+                    <select id="sex" name="sex" class="form-control" required>
+                        <option value="">Select</option>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                        <option value="Prefer not to say">Prefer not to say</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="birthdate" class="form-label">Birthdate*</label>
+                    <input type="date" id="birthdate" name="birthdate" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email Address*</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="region" class="form-label">Select Region*</label>
+                    <select id="region" name="region" class="form-control" required>
+                        <option value="">Select Region</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="city" class="form-label">Select City*</label>
+                    <select id="city" name="city" class="form-control" required>
+                        <option value="">Select City</option>
+                    </select>
+                </div>
+                <div class="text-center">
+                    <input class="btn-submit" type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+    </div>
+          <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="successModalLabel">Registration Success</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modal-message">
+                    Registration successful!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Okay</button>
+                </div>
+            </div>
+        </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getAuth } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+        import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDQaecIrOy6e4yc8vKkDaTmTB0hx2myhqA",
+            authDomain: "innolympics-c68ba.firebaseapp.com",
+            projectId: "innolympics-c68ba",
+            storageBucket: "innolympics-c68ba.appspot.com",
+            messagingSenderId: "850771391386",
+            appId: "1:850771391386:web:f14e9223ad30a529294023",
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const regionDropdown = document.getElementById('region');
+            const cityDropdown = document.getElementById('city');
+            const form = document.getElementById('admin-registration-form');
+            const messageContainer = document.getElementById('message-container');
+
+            const philippines = {
+                'NCR': ['Caloocan', 'Las Piñas', 'Makati', 'Malabon', 'Mandaluyong', 'Manila', 'Marikina', 'Muntinlupa', 'Navotas', 'Parañaque', 'Pasay', 'Pasig', 'Quezon City', 'San Juan', 'Taguig', 'Valenzuela'],
+                'CAR': ['Baguio', 'Tabuk', 'Bontoc', 'Lagawe', 'Kabugao', 'La Trinidad'],
+                'Region I': ['San Fernando (La Union)', 'Laoag', 'Vigan', 'Dagupan', 'Alaminos', 'Candon', 'Batac', 'San Carlos'],
+                'Region II': ['Tuguegarao', 'Ilagan', 'Santiago', 'Cauayan', 'Bayombong', 'Solano'],
+                'Region III': ['Angeles', 'Balanga', 'Cabanatuan', 'Gapan', 'Malolos', 'Meycauayan', 'Olongapo', 'Palayan', 'San Fernando (Pampanga)', 'San Jose del Monte', 'Tarlac'],
+                'Region IV-A': ['Antipolo', 'Batangas City', 'Calamba', 'Cavite City', 'Dasmariñas', 'Imus', 'Lipa', 'Lucena', 'San Pablo', 'Santa Rosa', 'Trece Martires', 'Tanauan'],
+                'Region IV-B': ['Oriental Mindoro', 'Puerto Princesa', 'Mamburao', 'Boac', 'Romblon', 'Calapan'],
+                'Region V': ['Legazpi', 'Naga', 'Iriga', 'Tabaco', 'Masbate', 'Sorsogon'],
+                'Region VI': ['Iloilo City', 'Bacolod', 'Roxas City', 'Silay', 'Kabankalan', 'Talisay (Negros Occidental)', 'Victorias'],
+                'Region VII': ['Cebu City', 'Lapu-Lapu', 'Mandaue', 'Tagbilaran', 'Toledo', 'Danao'],
+                'Region VIII': ['Tacloban', 'Ormoc', 'Calbayog', 'Catbalogan', 'Borongan', 'Maasin'],
+                'Region IX': ['Zamboanga City', 'Dipolog', 'Pagadian', 'Dapitan', 'Isabela (Basilan)'],
+                'Region X': ['Cagayan de Oro', 'Iligan', 'Malaybalay', 'Valencia (Bukidnon)', 'Ozamiz', 'El Salvador', 'Tangub'],
+                'Region XI': ['Davao City', 'Panabo', 'Tagum', 'Samal', 'Digos', 'Mati'],
+                'Region XII': ['General Santos', 'Cotabato City', 'Kidapawan', 'Koronadal', 'Tacurong', 'Sultan Kudarat'],
+                'CARAGA': ['Butuan', 'Surigao City', 'Bislig', 'Tandag'],
+                'BARMM': ['Cotabato City', 'Marawi', 'Lamitan', 'Sulu', 'Tawi-Tawi', 'Basilan']
+            };
+
+            Object.keys(philippines).forEach(region => {
+                const option = document.createElement('option');
+                option.value = region;
+                option.textContent = region;
+                regionDropdown.appendChild(option);
+            });
+
+            regionDropdown.addEventListener('change', function () {
+                const selectedRegion = this.value;
+                cityDropdown.innerHTML = '';
+                if (selectedRegion) {
+                    philippines[selectedRegion].forEach(city => {
+                        const option = document.createElement('option');
+                        option.value = city;
+                        option.textContent = city;
+                        cityDropdown.appendChild(option);
+                    });
+                }
+            });
+
+            form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const birthdate = new Date(form.birthdate.value);
+    const today = new Date();
+    const age = today.getFullYear() - birthdate.getFullYear();
+    if (birthdate > today || age < 18) {
+        showMessage('You must be at least 18 years old.', 'error');
+        return;
+    }
+
+    const formData = {
+        firstName: form.firstName.value.trim(),
+        lastName: form.lastName.value.trim(),
+        middleName: form.middleName.value || null,
+        sex: form.sex.value,
+        birthdate: form.birthdate.value,
+        email: form.email.value.trim(),
+        region: form.region.value,
+        city: form.city.value,
+    };
+
+    try {
+        await addDoc(collection(db, "userRegistrations"), formData);
+        const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+        document.getElementById('modal-message').textContent = "Registration successful!";
+        successModal.show();
+        form.reset();
+    } catch (error) {
+        console.error("Error adding document: ", error);
+        showMessage('Failed to register. Please try again.', 'error');
+    }
+});
+
+        });
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

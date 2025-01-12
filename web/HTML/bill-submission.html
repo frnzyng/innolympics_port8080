@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Submission</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(to bottom, #f7f9ff, #cdd6ff);
+            color: #021a84;
+        }
+
+        .navbar {
+            background-color: #021a84;
+        }
+
+        .navbar-brand, .nav-link {
+            color: #ffffff !important;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            color: #021a84;
+            font-weight: bold;
+        }
+
+        .form-control, select {
+            border-radius: 5px;
+            border: 1px solid #a36361;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .btn-submit {
+            background-color: #6e7cb6;
+            color: #fff;
+            border-radius: 5px;
+            padding: 10px 20px;
+        }
+
+        .btn-submit:hover {
+            background-color: #4d0070ff;
+        }
+
+        .alert {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand">LegisTrackr</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="bill-dashboard.html">Back</a>
+                    </li>
+                </ul>  vb  
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="card">
+            <h2 class="card-title text-center">Bill Submission</h2>
+            <form id="admin-submission-form">
+                <div class="mb-3">
+                    <label for="bill-title" class="form-label">Bill Title*</label>
+                    <input type="text" id="bill-title" name="billTitle" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="bill-no" class="form-label">Bill No.*</label>
+                    <input type="text" id="bill-no" name="billNo" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="date" class="form-label">Date*</label>
+                    <input type="date" id="date" name="date" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="author" class="form-label">Author*</label>
+                    <input type="text" id="author" name="author" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="co-authors" class="form-label">Co-Authors</label>
+                    <div id="co-authors-container" class="d-flex flex-column">
+                        <input type="text" class="form-control mb-2 co-author" name="coAuthors[]">
+                    </div>
+                    <button type="button" id="add-co-author" class="btn btn-secondary btn-sm">+ Add Co-Author</button>
+                </div>
+                <div class="mb-3">
+                    <label for="category" class="form-label">Category*</label>
+                    <select id="category" name="category" class="form-select" required>
+                        <option value="">Select Category</option>
+                        <option value="Education">Education</option>
+                        <option value="Health">Health</option>
+                        <option value="Agriculture">Agriculture</option>
+                        <option value="Environment">Environment</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Transportation">Transportation</option>
+                        <option value="Housing">Housing</option>
+                        <option value="Tourism">Tourism</option>
+                        <option value="Energy">Energy</option>
+                        <option value="Social Welfare">Social Welfare</option>
+                        <option value="Labor">Labor</option>
+                        <option value="Public Safety">Public Safety</option>
+                        <option value="Justice">Justice</option>
+                        <option value="Defense">Defense</option>
+                        <option value="Foreign Affairs">Foreign Affairs</option>
+                        <option value="Trade">Trade</option>
+                        <option value="Culture">Culture</option>
+                        <option value="Science and Technology">Science and Technology</option>
+                        <option value="Communication">Communication</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Urban Development">Urban Development</option>
+                        <option value="Infrastructure">Infrastructure</option>
+                        <option value="Water Resources">Water Resources</option>
+                        <option value="Food Security">Food Security</option>
+                        <option value="Public Health">Public Health</option>
+                        <option value="Climate Change">Climate Change</option>
+                        <option value="Economic Development">Economic Development</option>
+                        <option value="Human Rights">Human Rights</option>
+                        <option value="Security">Security</option>
+                        <option value="Labor Rights">Labor Rights</option>
+                        <option value="Public Services">Public Services</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="scope" class="form-label">Scope*</label>
+                    <select id="scope" name="scope" class="form-select" required>
+                        <option value="">Select Scope</option>
+                        <option value="National">National</option>
+                        <option value="Local">Local</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="summary" class="form-label">Summary/Rationale*</label>
+                    <textarea id="summary" name="summary" class="form-control" rows="4" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="committee-referral" class="form-label">Committee Referral*</label>
+                    <select id="committee-referral" name="committeeReferral" class="form-select" required></select>
+                </div>
+                <div class="mb-3">
+                    <label for="full-bill-file" class="form-label">Full Bill File*</label> 
+                    <input type="file" id="full-bill-file" name="fullBillFile" accept=".pdf" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="office-of-origin" class="form-label">Office of Origin*</label>
+                    <select id="office-of-origin" name="officeOfOrigin" class="form-select" required>
+                        <option value="">Select Office</option>
+                        <option value="Senate">Senate</option>
+                        <option value="House of Representatives">House of Representatives</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-submit w-100">Submit</button>
+            </form>
+            <div id="message-container"></div>
+        </div>
+    </div>
+    <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
+
+// Firebase Configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyDQaecIrOy6e4yc8vKkDaTmTB0hx2myhqA",
+    authDomain: "innolympics-c68ba.firebaseapp.com",
+    projectId: "innolympics-c68ba",
+    storageBucket: "innolympics-c68ba.appspot.com",
+    messagingSenderId: "850771391386",
+    appId: "1:850771391386:web:f14e9223ad30a529294023",
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('admin-submission-form');
+    const messageContainer = document.getElementById('message-container');
+    const addCoAuthorButton = document.getElementById('add-co-author');
+    const coAuthorsContainer = document.getElementById('co-authors-container');
+    const committeeDropdown = document.getElementById('committee-referral');
+
+    const committees = [
+        'ACCOUNTS',
+        'AD HOC COMMITTEE ON AGRICULTURE SERVICES CONVERGENCE INITIATIVE',
+        'AD HOC COMMITTEE ON MARAWI REHABILITATION AND VICTIMS COMPENSATION',
+        'AD HOC COMMITTEE ON MILITARY AND UNIFORMED PERSONNEL PENSION SYSTEM',
+        'AD HOC COMMITTEE ON THE RELOCATION OF THE HOUSE OF REPRESENTATIVES COMPLEX',
+        'AGRARIAN REFORM',
+        'AGRICULTURE AND FOOD',
+        'APPROPRIATIONS',
+        'AQUACULTURE AND FISHERIES RESOURCES',
+        'BANKS AND FINANCIAL INTERMEDIARIES',
+        'BASES CONVERSION',
+        'BASIC EDUCATION AND CULTURE',
+        'BICOL AFFAIRS AND ECONOMIC DEVELOPMENT',
+        'CIVIL SERVICE AND PROFESSIONAL REGULATION',
+        'CLIMATE CHANGE',
+        'CONSTITUTIONAL AMENDMENTS',
+        'COOPERATIVES DEVELOPMENT',
+        'CREATIVE INDUSTRIES',
+        'DANGEROUS DRUGS',
+        'DISASTER RESILIENCE',
+        'EAST ASEAN GROWTH AREA',
+        'ECOLOGY',
+        'ECONOMIC AFFAIRS',
+        'ENERGY',
+        'ETHICS AND PRIVILEGES',
+        'FLAGSHIP PROGRAMS AND PROJECTS',
+        'FOOD SECURITY',
+        'FOREIGN AFFAIRS',
+        'GAMES AND AMUSEMENTS',
+        'GLOBALIZATION AND WTO',
+        'GOOD GOVERNMENT AND PUBLIC ACCOUNTABILITY',
+        'GOVERNMENT ENTERPRISES AND PRIVATIZATION',
+        'GOVERNMENT REORGANIZATION',
+        'HEALTH',
+        'HIGHER AND TECHNICAL EDUCATION',
+        'HOUSING AND URBAN DEVELOPMENT',
+        'HUMAN RIGHTS',
+        'INDIGENOUS CULTURAL COMMUNITIES AND INDIGENOUS PEOPLES',
+        'INFORMATION AND COMMUNICATIONS TECHNOLOGY INTER-PARLIAMENTARY RELATIONS AND DIPLOMACY',
+        'JUSTICE',
+        'LABOR AND EMPLOYMENT',
+        'LAND USE',
+        'LEGISLATIVE FRANCHISES',
+        'LOCAL GOVERNMENT',
+        'METRO MANILA DEVELOPMENT',
+        'MICRO, SMALL AND MEDIUM ENTERPRISE DEVELOPMENT',
+        'MINDANAO AFFAIRS',
+        'MUSLIM AFFAIRS',
+        'NATIONAL DEFENSE AND SECURITY',
+        'NATURAL RESOURCES',
+        'NORTH LUZON GROWTH QUADRANGLE',
+        'NUCLEAR ENERGY',
+        'OVERSEAS WORKERS AFFAIRS',
+        'PEACE, RECONCILIATION AND UNITY',
+        'PEOPLE\'S PARTICIPATION',
+        'PERSONS WITH DISABILITIES',
+        'POPULATION AND FAMILY RELATIONS',
+        'POVERTY ALLEVIATION',
+        'PUBLIC ACCOUNTS',
+        'PUBLIC INFORMATION',
+        'PUBLIC ORDER AND SAFETY',
+        'PUBLIC WORKS AND HIGHWAYS',
+        'REFORESTATION',
+        'REVISION OF LAWS',
+        'RULES',
+        'RURAL DEVELOPMENT',
+        'SCIENCE AND TECHNOLOGY',
+        'SENIOR CITIZENS',
+        'SOCIAL SERVICES',
+        'SOUTHERN TAGALOG DEVELOPMENT',
+        'STRATEGIC INTELLIGENCE',
+        'SUFFRAGE AND ELECTORAL REFORMS',
+        'SUSTAINABLE DEVELOPMENT GOALS',
+        'TOURISM',
+        'TRADE AND INDUSTRY',
+        'TRANSPORTATION',
+        'VETERANS AFFAIRS AND WELFARE',
+        'VISAYAS DEVELOPMENT',
+        'WAYS AND MEANS',
+        'WELFARE OF CHILDREN',
+        'WEST PHILIPPINE SEA',
+        'WOMEN AND GENDER EQUALITY',
+        'YOUTH AND SPORTS DEVELOPMENT'
+        ];
+    
+    // Populate the committee dropdown
+    committees.forEach(committee => {
+        const option = document.createElement('option');
+        option.value = committee;
+        option.textContent = committee;
+        committeeDropdown.appendChild(option);
+    });
+
+    // Add Co-Author input field dynamically
+    addCoAuthorButton.addEventListener('click', () => {
+        const coAuthorInput = document.createElement('input');
+        coAuthorInput.type = 'text';
+        coAuthorInput.classList.add('co-author');
+        coAuthorInput.name = 'coAuthors[]';
+        coAuthorsContainer.appendChild(coAuthorInput);
+    });
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+    
+        const billTitle = form.billTitle.value.trim();
+        const billNo = form.billNo.value.trim();
+        const date = form.date.value;
+        const author = form.author.value.trim();
+        const coAuthors = Array.from(form.querySelectorAll('.co-author')).map(input => input.value.trim());
+        const category = form.category.value;
+        const scope = form.scope.value;
+        const summary = form.summary.value.trim();
+        const committeeReferral = form.committeeReferral.value;
+        const fullBillFile = form.fullBillFile.files[0];
+        const officeOfOrigin = form.officeOfOrigin.value;
+    
+        // Simple validation for required fields
+        if (!billTitle || !billNo || !author || !category || !scope || !summary || !committeeReferral || !fullBillFile || !officeOfOrigin) {
+            showMessage('Please fill out all required fields.', 'error');
+            return;
+        }
+    
+        if (fullBillFile.type !== 'application/pdf') {
+            showMessage('Please upload a PDF file for the bill.', 'error');
+            return;
+        }
+    
+        try {
+            // Save bill data to Firestore using addDoc()
+            await addDoc(collection(db, 'bills'), {
+                billTitle,
+                billNo,
+                date,
+                author,
+                coAuthors,
+                category,
+                scope,
+                summary,
+                committeeReferral,
+                fullBillFile: fullBillFile.name, // Store the file name (you can later handle file storage separately)
+                officeOfOrigin,
+                submittedAt: new Date(),
+            });
+    
+            showMessage('Bill submitted successfully!', 'success');
+            window.location.href = 'bill-dashboard.html';
+        } catch (error) {
+            showMessage('Error submitting bill: ' + error.message, 'error');
+        }
+    });
+
+});
+
+function showMessage(message, type) {
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('alert');
+    messageElement.classList.add(type === 'success' ? 'alert-success' : 'alert-danger');
+    messageElement.textContent = message;
+    document.getElementById('message-container').appendChild(messageElement);
+}
+</script>
+    <!-- <script src="../admin-submission.js"></script> -->
+</body>
+</html>

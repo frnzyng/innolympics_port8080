@@ -1,0 +1,106 @@
+{
+  "project_info": {
+    "project_number": "850771391386",
+    "project_id": "innolympics-c68ba",
+    "storage_bucket": "innolympics-c68ba.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:850771391386:android:f14e9223ad30a529294023",
+        "android_client_info": {
+          "package_name": "com.company.innolympics"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "850771391386-75naocsl9vto478qqd7771eorhbhif39.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.company.innolympics",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "850771391386-iofo8k76f74ob93qmfucf8cjk5mq1la0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.company.innolympics",
+            "certificate_hash": "74551d8e28637c944cbadb56f5d61c7670fc0ede"
+          }
+        },
+        {
+          "client_id": "850771391386-8rhsmfpc9fngp2c58hb9jk5bhc5pj69o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQaecIrOy6e4yc8vKkDaTmTB0hx2myhqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "850771391386-8rhsmfpc9fngp2c58hb9jk5bhc5pj69o.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "850771391386-uj31ak7dit6mtikftubjlesni9t9u88e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.innolympics"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:850771391386:android:b579bdaa383129e1294023",
+        "android_client_info": {
+          "package_name": "com.mycompany.innolympics"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "850771391386-dhj2ti6ce3tt7pmfj1rf8dtefq5jtq0a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.innolympics",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "850771391386-8rhsmfpc9fngp2c58hb9jk5bhc5pj69o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQaecIrOy6e4yc8vKkDaTmTB0hx2myhqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "850771391386-8rhsmfpc9fngp2c58hb9jk5bhc5pj69o.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "850771391386-uj31ak7dit6mtikftubjlesni9t9u88e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.innolympics"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

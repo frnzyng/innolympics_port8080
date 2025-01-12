@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Homepage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --clr-light: #ffffff;
+            --clr-dark: #242424;
+            --clr-accent: #7c92f4;
+            --clr-accent2: #fff9da;
+            --clr-accent3: #ffefee;
+            --clr-accent4: #dcefe5;
+            --clr-accent5: #ffd9d1;
+            --clr-accent6: #e6e9ff;
+            --clr-accent-light: #FFD5D2;
+            --clr-accent-dark: #0936ff;
+            --clr-button: #021a84;
+            --clr-button-hover: #BAC0F0;
+            --ff-cursive: "Great Vibes", cursive;
+            --ff-display: "Rampart One", sans-serif;
+            --ff-body: "Poppins", sans-serif;
+            --fs-h1: 3em;
+            --fs-h2: 2.5em;
+            --fs-h3: 2em;
+            --fs-h4: 1.5em;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            color: var(--clr-dark);
+            font-family: var(--ff-body);
+            font-size: 16px;
+        }
+
+        body {
+            background-color: var(--clr-light);
+        }
+
+        h1 {
+            font-size: var(--fs-h1);
+        }
+
+        h2 {
+            font-size: var(--fs-h2);
+            color:#dcefe5;
+        }
+
+        h3 {
+            font-size: var(--fs-h3);
+        }
+
+        h4 {
+            font-size: var(--fs-h4);
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"] {
+            margin-top: 4px;
+            padding: 10px 16px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 16px;
+            border-color: var(--clr-button);
+            border-style: solid;
+            border-radius: 100px;
+            background-color: var(--clr-button);
+            color: var(--clr-dark);
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            border-color: var(--clr-button-hover);
+            background-color: var(--clr-button-hover);
+        }
+
+        /* Main Container */
+        .main-container {
+            width: 100vw;
+            height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Left Container */
+        .left-container {
+            width: 50%;
+            display: flex;
+            justify-content: center; /* Center the logo horizontally */
+            align-items: center; /* Center the logo vertically */
+            padding: 20px;
+        }
+
+        .logo-container {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .logo-img {
+            width: 100%;
+            max-width: 500px; /* Make the logo bigger */
+            height: auto;
+        }
+
+        /* Right Container */
+        .right-container {
+            background-color: #021a84; /* Dark blue */
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            height: 100%;
+        }
+
+        .text-title {
+            padding-bottom: 100px;
+            text-align: center;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* space between buttons */
+            align-items: center; /* center align buttons */
+        }
+
+        .dashboard-button {
+    padding: 20px 40px; /* Increased padding for bigger button */
+    font-size: 1.2em; /* Increased font size */
+    border-radius: 8px; /* Slightly rounded corners for a better appearance */
+    background-color: var(--clr-accent);
+    color: var(--clr-dark);
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+}
+
+.dashboard-button:hover {
+    background-color: var(--clr-accent-dark);
+}
+
+        /* Responsive Styling */
+        @media (max-width: 1024px) {
+            .main-container {
+                height: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .left-container {
+                display: none;
+            }
+            .right-container {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="left-container">
+            <div class="logo-container">
+                <img class="logo-img" src="../assets/images/Legistrackr full.png" alt="Logo">
+            </div>
+        </div>
+
+        <div class="right-container">
+            <h2 class="text-title">Admin Dashboard</h2>
+            <div class="button-container">
+                <button class="dashboard-button" id="user-dashboard">User Dashboard</button>
+                <button class="dashboard-button" id="bills-dashboard">Bills Dashboard</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        // Add event listeners to the buttons
+        document.addEventListener('DOMContentLoaded', () => {
+            const userDashboardButton = document.getElementById('user-dashboard');
+            const billsDashboardButton = document.getElementById('bills-dashboard');
+
+            // Redirect to User Dashboard page
+            userDashboardButton.addEventListener('click', () => {
+                window.location.href = '../HTML/dashboard.html'; // Update with the correct path
+            });
+
+            // Redirect to Bills Dashboard page
+            billsDashboardButton.addEventListener('click', () => {
+                window.location.href = '../HTML/bill-dashboard.html'; // Update with the correct path
+            });
+        });
+    </script>
+</body>
+</html>
